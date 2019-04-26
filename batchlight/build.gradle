@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'org.jetbrains.dokka-android'
+
+group = 'co.yello.batchlight'
+
+android {
+    compileSdkVersion 28
+    testOptions.unitTests.includeAndroidResources = true
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/../javadoc"
+    reportUndocumented = false
+    skipDeprecated = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "io.mockk:mockk:1.9"
+    testImplementation "org.robolectric:robolectric:4.2"
+}

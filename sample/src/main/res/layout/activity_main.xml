@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="co.yello.db.batchinsertsample.MainActivity" tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/single_time"
+            tools:text="Single insert time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/batch_time"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/batch_time"
+            tools:text="Batch insert time" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/insertionCountText" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/insertionCountText"
+            tools:text="inserting count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+            android:text="@string/button_clear_and_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/doInsertButton"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/howManyRowsEditText"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_number_of_rows"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/howManyRowsEditText"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="64dp" android:layout_marginStart="64dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/rowCount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberSigned"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

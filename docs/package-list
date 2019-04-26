@@ -1,0 +1,5 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+co.yello.db.batchlight
+co.yello.db.batchlight.androidsqlite

@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Batch Insert Demo</string>
+    <string name="inserting" tools:keep="@string/inserting">Inserting…</string>
+    <string name="waiting_to_start">Waiting to start…</string>
+    <string name="button_clear_and_insert">Clear DB and Perform Inserts</string>
+    <string name="hint_number_of_rows">Number of Rows</string>
+    <plurals name="inserting_medium_objects">
+        <item quantity="one">Inserting %d medium sized object.</item>
+        <item quantity="other">Inserting %d medium sized objects.</item>
+    </plurals>
+    <string name="static_text">Here is some static text</string>
+    <string name="more_static_text">Here is some more text to show how fast insert can be</string>
+    <string name="progress_percentage" tools:keep="@string/progress_percentage">Inserting %d%% complete</string>
+    <string name="single_insert_Time" tools:keep="@string/single_insert_Time">Single insert time was %f</string>
+    <string name="batch_insert_time" tools:keep="@string/batch_insert_time">"Batched insert time was %f</string>
+</resources>

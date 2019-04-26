@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BatchStatement.execute - batchlight</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">batchlight</a>&nbsp;/&nbsp;<a href="../index.html">co.yello.db.batchlight</a>&nbsp;/&nbsp;<a href="index.html">BatchStatement</a>&nbsp;/&nbsp;<a href="./execute.html">execute</a><br/>
+<br/>
+<h1>execute</h1>
+<a name="co.yello.db.batchlight.BatchStatement$execute(kotlin.collections.Collection((co.yello.db.batchlight.BatchStatement.T)), kotlin.Function2((co.yello.db.batchlight.BatchBinder, co.yello.db.batchlight.BatchStatement.T, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="co.yello.db.batchlight.BatchStatement$execute(kotlin.collections.Collection((co.yello.db.batchlight.BatchStatement.T)), kotlin.Function2((co.yello.db.batchlight.BatchBinder, co.yello.db.batchlight.BatchStatement.T, kotlin.Unit)))/itemsToInsert">itemsToInsert</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html"><span class="identifier">Collection</span></a><span class="symbol">&lt;</span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="co.yello.db.batchlight.BatchStatement$execute(kotlin.collections.Collection((co.yello.db.batchlight.BatchStatement.T)), kotlin.Function2((co.yello.db.batchlight.BatchBinder, co.yello.db.batchlight.BatchStatement.T, kotlin.Unit)))/bindItemFunction">bindItemFunction</span><span class="symbol">:</span>&nbsp;<a href="../-batch-binder/index.html"><span class="identifier">BatchBinder</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Chunks the list into the maximum sized list that can be inserted at a time, then executes the insert
+with the <a href="execute.html#co.yello.db.batchlight.BatchStatement$execute(kotlin.collections.Collection((co.yello.db.batchlight.BatchStatement.T)), kotlin.Function2((co.yello.db.batchlight.BatchBinder, co.yello.db.batchlight.BatchStatement.T, kotlin.Unit)))/bindItemFunction">bindItemFunction</a> passed into the class.</p>
+<h3>Parameters</h3>
+<p><a name="itemsToInsert"></a>
+<code>itemsToInsert</code> - The collection of items of type <a href="index.html#T">T</a> to batch insert into the database.</p>
+<p><a name="bindItemFunction"></a>
+<code>bindItemFunction</code> - 
+<p>A function that performs the binds for each field in the <a href="index.html#T">T</a> passed to the function.
+The function is an extension on <a href="../-batch-binder/index.html">BatchBinder</a> so all bind functions can be accessed from within.</p>
+
+
+<p>When binding the order of the bind calls should match the structure of the table inserting.</p>
+
+
+<p>Example usage:</p>
+
+
+<p>A simple class would look something like</p>
+
+
+<pre><code>data class BatchClass(val id: Int, val text: String, val num: Int)
+</code></pre>
+
+<p>The SQL Create statement for the corresponding table to that object would be:</p>
+
+
+<pre><code>CREATE TABLE BatchClass (
+     id INTEGER,
+     text TEXT,
+     num INTEGER
+)
+</code></pre>
+
+<p>The <a href="../-binder/index.html">Binder</a> generated for this table will will have the params (?,?,?). To correctly bind the three values
+to their correct ? in the prepared statement the function would be:</p>
+
+
+<pre><code>{ batchObject - &gt;
+     bindLong(batchObject.id)
+     bindString(batchObject.text)
+     bindLong(batchObject.num)
+}
+</code></pre></p>
+</BODY>
+</HTML>
