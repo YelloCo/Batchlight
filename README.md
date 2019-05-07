@@ -1,6 +1,8 @@
 Batch Light
 =====
 
+[![Jitpack](https://jitpack.io/v/yelloco/Batchlight.svg)](https://jitpack.io/#yelloco/Batchlight)
+
 Batch Light is a library for batch inserting to SQLite on Android.
 
 A demo project can be found on Google Play, and as an Instant App.
@@ -10,6 +12,25 @@ A demo project can be found on Google Play, and as an Instant App.
 </a>
 
 ## Download
+
+For simplicity the project is hosted on [JitPack](https://jitpack.io/). The project can be added to an Android Gradle 
+project by doing the following:
+
+Step 1. Add the JitPack repository to your root build.gradle at the end of repositories:
+```groovy
+allprojects {
+	repositories {
+		...
+	    maven { url 'https://jitpack.io' }
+	}
+}
+```
+Step 2. Add the dependency
+```groovy
+dependencies {
+	implementation 'com.github.yelloco:Batchlight:v1.0'
+}
+```
 
 ## Usage
 Batch Lite has 4 main steps to use.
@@ -33,7 +54,7 @@ val binderConfig = SQLiteBinderConfig.getInsertConfig(
 val batcher = BatchStatement<MediumSizeObject>(binderConfig)
 ```
 
-3. call the execute function on the batcher, passing in the list to be inserted and a clojure that tells it how to bind 
+3. call the execute function on the batcher, passing in the list to be inserted and a closure that tells it how to bind 
 the items in the list. The config will generate a statement that looks like:
       
 ```kotlin
@@ -53,7 +74,7 @@ The generated SQLite for a list of 3 of the items above would be:
 INSERT INTO TABLE_NAME VALUES (?, ?), (?, ?), (?, ?)
 ```
 
-To bind the list, the closure below should be used. The binder will use the clojure for each item to bind to the generated 
+To bind the list, the closure below should be used. The binder will use the closure for each item to bind to the generated 
 statement.
 
 ```kotlin
