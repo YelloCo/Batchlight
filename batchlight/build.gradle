@@ -15,8 +15,8 @@ android {
 }
 
 dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/../javadoc"
+    outputFormat = 'gfm'
+    outputDirectory = "$buildDir/../../docs"
     reportUndocumented = false
     skipDeprecated = true
 }
